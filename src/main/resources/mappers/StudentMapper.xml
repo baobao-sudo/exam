@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uchain.exam.dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.uchain.exam.entity.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="question01" property="question01" jdbcType="LONGVARCHAR" />
+    <result column="question02" property="question02" jdbcType="LONGVARCHAR" />
+    <result column="question03" property="question03" jdbcType="LONGVARCHAR" />
+    <result column="question04" property="question04" jdbcType="LONGVARCHAR" />
+    <result column="question05" property="question05" jdbcType="LONGVARCHAR" />
+    <result column="question06" property="question06" jdbcType="LONGVARCHAR" />
+    <result column="question07" property="question07" jdbcType="LONGVARCHAR" />
+    <result column="question08" property="question08" jdbcType="LONGVARCHAR" />
+    <result column="question09" property="question09" jdbcType="LONGVARCHAR" />
+    <result column="question10" property="question10" jdbcType="LONGVARCHAR" />
+    <result column="question11" property="question11" jdbcType="LONGVARCHAR" />
+    <result column="question12" property="question12" jdbcType="LONGVARCHAR" />
+    <result column="question13" property="question13" jdbcType="LONGVARCHAR" />
+    <result column="question14" property="question14" jdbcType="LONGVARCHAR" />
+    <result column="question15" property="question15" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uchain.exam.entity.Student" >
+    insert into student (id, student_id, student_name, 
+      direction, question01, question02, 
+      question03, question04, question05, 
+      question06, question07, question08, 
+      question09, question10, question11, 
+      question12, question13, question14, 
+      question15)
+    values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{question01,jdbcType=LONGVARCHAR}, #{question02,jdbcType=LONGVARCHAR}, 
+      #{question03,jdbcType=LONGVARCHAR}, #{question04,jdbcType=LONGVARCHAR}, #{question05,jdbcType=LONGVARCHAR}, 
+      #{question06,jdbcType=LONGVARCHAR}, #{question07,jdbcType=LONGVARCHAR}, #{question08,jdbcType=LONGVARCHAR}, 
+      #{question09,jdbcType=LONGVARCHAR}, #{question10,jdbcType=LONGVARCHAR}, #{question11,jdbcType=LONGVARCHAR}, 
+      #{question12,jdbcType=LONGVARCHAR}, #{question13,jdbcType=LONGVARCHAR}, #{question14,jdbcType=LONGVARCHAR}, 
+      #{question15,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.uchain.exam.entity.Student" >
+    update student
+    set student_id = #{studentId,jdbcType=VARCHAR},
+      student_name = #{studentName,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      question01 = #{question01,jdbcType=LONGVARCHAR},
+      question02 = #{question02,jdbcType=LONGVARCHAR},
+      question03 = #{question03,jdbcType=LONGVARCHAR},
+      question04 = #{question04,jdbcType=LONGVARCHAR},
+      question05 = #{question05,jdbcType=LONGVARCHAR},
+      question06 = #{question06,jdbcType=LONGVARCHAR},
+      question07 = #{question07,jdbcType=LONGVARCHAR},
+      question08 = #{question08,jdbcType=LONGVARCHAR},
+      question09 = #{question09,jdbcType=LONGVARCHAR},
+      question10 = #{question10,jdbcType=LONGVARCHAR},
+      question11 = #{question11,jdbcType=LONGVARCHAR},
+      question12 = #{question12,jdbcType=LONGVARCHAR},
+      question13 = #{question13,jdbcType=LONGVARCHAR},
+      question14 = #{question14,jdbcType=LONGVARCHAR},
+      question15 = #{question15,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, student_id, student_name, direction, question01, question02, question03, 
+    question04, question05, question06, question07, question08, question09, question10, 
+    question11, question12, question13, question14, question15
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, student_id, student_name, direction, question01, question02, question03, 
+    question04, question05, question06, question07, question08, question09, question10, 
+    question11, question12, question13, question14, question15
+    from student
+  </select>
+    <select id="selectByStudentId" parameterType="String" resultMap="BaseResultMap">
+    select id, student_id, student_name, direction, question01, question02, question03,
+    question04, question05, question06, question07, question08, question09, question10,
+    question11, question12, question13, question14, question15
+    from student
+     where student_id = #{studentId,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByDirection" parameterType="String" resultMap="BaseResultMap">
+    select id, student_id, student_name, direction, question01, question02, question03,
+    question04, question05, question06, question07, question08, question09, question10,
+    question11, question12, question13, question14, question15
+    from student
+    where direction = #{direction,jdbcType=VARCHAR}
+    </select>
+</mapper>
